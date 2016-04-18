@@ -50,16 +50,18 @@ def request_accepts_all_mime():
 @app.route('/json_post', methods=["POST"])
 def json_post():
     if request_wants_json() or request_accepts_all_mime():
+        print(request.mimetype)
+        if request.mimetype != 'application/json' and request.mimetype != 'application/x-www-form-urlencoded':
+            return 'Unsupported Media Type', 415
         print(request.data)
         return jsonify({'hello' : 'world'})
     else:
-        return 'Not Supported', 406
+        return 'Not Acceptable', 406
 
 
 ##################
 # HANDLERS
 ##################
-
 
 @app.errorhandler(Exception)
 def unhandled_exception(e):
