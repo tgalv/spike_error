@@ -52,6 +52,8 @@ class ValidateAllErrors(Exception):
     
     status_code = 400
 
+    def __init__(self, message):
+        self.message = message
     
 
 def validate_report_all_errors(instance, schema):
