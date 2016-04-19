@@ -12,7 +12,7 @@ To model the kinds of exceptions that might occur; as well as those identified b
 
 The code is deliberately raw given the context of a Spike. I did not want to second guess a Land Registry Error Handling Framework. Rather seed some ideas as to what might need to be incorporated in the code in Refactorings as we move forward.
 
-The example is an amalgamation of the responses of Client Facing services (showing rendering of web pages e.g. [Borrower Front End] (https://github.com/LandRegistry/dm-borrower-frontend) and the responses hit by other Microservices such as the Conveyancers interaction with the [Deed API] (https://github.com/LandRegistry/dm-deed-api/).
+The example is an amalgamation of the responses of Client Facing services (showing rendering of web pages e.g. [Borrower Front End] (https://github.com/LandRegistry/dm-borrower-frontend)) and the responses hit by other Microservices such as the Conveyancers interaction with the [Deed API] (https://github.com/LandRegistry/dm-deed-api/).
 
 # Tests
 
