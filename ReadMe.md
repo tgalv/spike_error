@@ -24,26 +24,26 @@ The `examples.py` gives a demo against a running server using [requests] (http:/
 
 The following Curl commands also demonstrate the different cases. 
 
-## 200
+### 200
 
 curl -I http://0.0.0.0:5000
 
-## 500
+### 500
 
 curl -I http://0.0.0.0:5000/div_zero
 
-# 404
+### 404
 
 curl -I http://0.0.0.0:5000/foo
 
-# 415 Unsupported Media Type
+### 415 Unsupported Media Type
 
 curl -H "Content-Type: text/xml" -d @foo.xml -X POST http://0.0.0.0:5000/json_post
 
-# 406 Accept Header Unacceptable (Content Negotiation)
+### 406 Accept Header Unacceptable (Content Negotiation)
 
 curl -H "Content-Type: text/xml" -H accept:text/xml  -d @foo.xml -X POST http://0.0.0.0:5000/json_post
 
-# 400 Schema Invalid
+### 400 Schema Invalid
 
 curl -X POST -d '{"name":11,"price":"foo"}' http://0.0.0.0:5000/json_post
