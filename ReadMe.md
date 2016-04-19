@@ -1,24 +1,40 @@
-# Health Check
+# Error Spike
 
-curl http://0.0.0.0:5000
+This is the Spike Code for the [Investigate Generic Error Handler] (https://www.pivotaltracker.com/story/show/117047569) Story. 
 
-# 500
+Initial Investigations by Simon are on an old [branch] (https://github.com/LandRegistry/dm-deed-api/tree/CHORE4-api-exceptions).
 
-curl http://0.0.0.0:5000/div_zero
+# Purpose
+
+To model the kinds of exceptions that might occur; as well as those identified by Simon this includes some demonstrations of Content Negotiation.
+
+# Scope
+
+The code is deliberately raw given the context of a Spike. I did not want to second guess a Land Registry Error Handling Framework. Rather seed some ideas as to what might need to be incorporated in the code in Refactorings as we move forward.
+
+# Tests
+
+Unittests give a working example of the various Error Modes.
+
+# Demo
+
+The `examples.py` gives a demo against a running server using [requests] (http://docs.python-requests.org/en/master/).
+
+The following Curl commands also demonstrate the different cases. 
+
+## 200
+
+curl -I http://0.0.0.0:5000
+
+## 500
+
+curl -I http://0.0.0.0:5000/div_zero
 
 # 404
 
-curl http://0.0.0.0:5000/foo
+curl -I http://0.0.0.0:5000/foo
 
 # 415 Unsupported Media Type
-
-## Happy Path
-
-#curl -X POST -d '{"name" : "Eggs", "price" : 34.99}' http://0.0.0.0:5000/json_post
-
-curl -H "Content-Type: application/json" POST -d '{"name" : "Eggs", "price" : 34.99}' http://0.0.0.0:5000/json_post
-
-## Failure Mode
 
 curl -H "Content-Type: text/xml" -d @foo.xml -X POST http://0.0.0.0:5000/json_post
 
@@ -28,4 +44,4 @@ curl -H "Content-Type: text/xml" -H accept:text/xml  -d @foo.xml -X POST http://
 
 # 400 Schema Invalid
 
-curl -X POST -d '{"name" : 11, "price" : "foo"}' http://0.0.0.0:5000/json_post
+curl -X POST -d '{"name":11,"price":"foo"}' http://0.0.0.0:5000/json_post
